@@ -2,17 +2,35 @@
   <div class="main">
     <div class="header">
       <button class="header-text" v-on:click="goToHomePage">Examiner</button>
-      <button class="header-button">Войти</button>
-      <button class="header-button">Регистрация</button>
     </div>
 
     <div class="body">
-      <div class="faculties">
-        <p class="faculty-text">Факультет:</p>
-        <div class="faculty-list">
+      <div class="choose-item">
+        <p class="choose-text">Факультет:</p>
+        <div class="choose-list">
           <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true" v-for="faculty in faculties">{{faculty.shortName}}</button>
         </div>
       </div>
+
+      <div class="choose-item">
+        <p class="choose-text">Курс:</p>
+        <div class="choose-list">
+          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">1 курс</button>
+          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">2 курс</button>
+          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">3 курс</button>
+          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">4 курс</button>
+        </div>
+      </div>
+
+
+      <div class="choose-item">
+        <p class="choose-text">Семестр:</p>
+        <div class="choose-list">
+          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">1 семестр</button>
+          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">2 семестр</button>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -47,7 +65,7 @@ export default {
 
 <style scoped>
 .header {
-  text-align: right;
+  text-align: left;
   background: linear-gradient(45deg, #ec93fa, #93dbfa);
   padding-bottom: 10px;
 }
@@ -55,37 +73,24 @@ export default {
 .header-text {
   font-size: 35px;
   font-weight: bold;
-  position: relative;
-  right: 950px;
   outline: none;
   border: none;
   background: none;
 }
 
-.header-button {
+.choose-item {
+  padding: 45px;
+}
+
+.choose-text {
   font-size: 20px;
-  font-weight: bold;
-  outline: none;
-  border: none;
-  background: none;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: 5em;
-}
-
-.faculties {
-  padding-top: 30px;
-}
-
-.faculty-text {
-  font-size: 25px;
   margin-right: 50px;
   position: relative;
   float: left;
   display: block;
 }
 
-.faculty-list {
+.choose-list {
   float: left;
   display: block;
   margin: 2px;
