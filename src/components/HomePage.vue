@@ -1,8 +1,8 @@
 <template>
   <div class="main" >
     <div class="header">
-      <button class="header-button">Войти</button>
-      <button class="header-button">Регистрация</button>
+      <button class="header-button" v-on:click="goToLoginPage">Войти</button>
+      <button class="header-button" v-on:click="goToRegistrationPage">Регистрация</button>
       <button class="header-button" v-on:click="goToAbout">О нас</button>
     </div>
 
@@ -33,6 +33,14 @@ export default {
   methods: {
     goToAbout: function () {
       this.$router.push("/about")
+    },
+
+    goToRegistrationPage: function () {
+      this.$router.push("/registration")
+    },
+
+    goToLoginPage: function () {
+      this.$router.push("/login")
     }
   }
 }

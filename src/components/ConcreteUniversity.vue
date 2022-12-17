@@ -8,27 +8,32 @@
       <div class="choose-item">
         <p class="choose-text">Факультет:</p>
         <div class="choose-list">
-          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true" v-for="faculty in faculties">{{faculty.shortName}}</button>
+          <button v-on:click="changeFaculty(faculty.shortName)" type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true" v-for="faculty in faculties">{{faculty.shortName}}</button>
         </div>
       </div>
 
       <div class="choose-item">
-        <p class="choose-text">Курс:</p>
+        <p class="choose-text" style="padding-right: 55px">Курс:</p>
         <div class="choose-list">
-          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">1 курс</button>
-          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">2 курс</button>
-          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">3 курс</button>
-          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">4 курс</button>
+          <button v-on:click="changeCourse(1)" type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">1 курс</button>
+          <button v-on:click="changeCourse(2)" type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">2 курс</button>
+          <button v-on:click="changeCourse(3)" type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">3 курс</button>
+          <button v-on:click="changeCourse(4)" type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">4 курс</button>
         </div>
       </div>
 
 
       <div class="choose-item">
-        <p class="choose-text">Семестр:</p>
+        <p class="choose-text" style="padding-right: 15px">Семестр:</p>
         <div class="choose-list">
-          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">1 семестр</button>
-          <button type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">2 семестр</button>
+          <button v-on:click="changeSemester(1)" type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">1 семестр</button>
+          <button v-on:click="changeSemester(2)" type="button" class="btn  active" data-bs-toggle="button" aria-pressed="true">2 семестр</button>
         </div>
+      </div>
+
+
+      <div class="subjects-button">
+        <button v-on:click="goToSubjects" type="submit" class="btn btn-success mb-3 btn-success">Показать предметы</button>
       </div>
 
     </div>
@@ -44,7 +49,10 @@ export default {
   data() {
     return {
       universityName: "",
-      faculties: []
+      faculties: [],
+      faculty: "",
+      course: "",
+      semester: "",
     }
   },
 
@@ -58,6 +66,24 @@ export default {
   methods: {
     goToHomePage: function () {
       this.$router.push("/")
+    },
+
+    changeFaculty: function (faculty) {
+      this.faculty = faculty
+    },
+
+    changeCourse: function (course) {
+      this.course = course
+    },
+
+    changeSemester: function (semester) {
+      this.semester = semester
+    },
+
+    goToSubjects: function () {
+      if (this.faculty !== "" && this.course !== "" && this.semester !== "") {
+        this.$router.push("/" + this.$route.params.universityName + "/" + this.faculty + "/" + this.course + "/" + this.semester + "/subjects")
+      }
     }
   }
 }
@@ -96,11 +122,20 @@ export default {
   margin: 2px;
 }
 
-.btn {
+.active {
   margin-left: 15px;
   margin-right: 15px;
   background: #ADC7FB;
   border: none;
   font-size: 20px;
 }
+.btn-success {
+  position: absolute;
+  top: 500px;
+  font-size: 30px;
+  left: 620px;
+}
+
+
+
 </style>
