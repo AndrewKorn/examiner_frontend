@@ -12,13 +12,19 @@
 
       <div class="decks row row-cols-1 row-cols-md-2 g-4">
         <div class="col" v-for="deck in this.decks">
-          <div class="card">
+          <div class="card" v-on:click="goToDeck(deck)">
             <div class="card-body">
-              <h5 class="card-title">{{deck.name}}</h5>
+              <h5 class="card-title" style="text-align: center">{{deck.name}}</h5>
+<!--
               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+-->
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="add-material">
+        <button class="add-btn">Добавить материал</button>
       </div>
 
 
@@ -50,6 +56,11 @@ export default {
   methods: {
     goToHomePage: function () {
       this.$router.push("/")
+    },
+
+    goToDeck: function (deck) {
+      const p = this.$route.params;
+      this.$router.push("/" + p.universityName + "/" + p.facultyName + "/" + p.course + "/" + p.semester + "/" + p.subjectName + "/" + deck.id + "/cards")
     }
   }
 }
@@ -83,7 +94,7 @@ export default {
   height: 180px;
   left: 0px;
 
-  background: url(src/assets/sbjhd.png);
+  background: url(src/assets/subject_header.png);
 }
 
 .txt {
@@ -91,7 +102,7 @@ export default {
   width: 1920px;
   height: 216px;
   left: 680px;
-  top: 10px;
+  top: 0;
 
   font-family: 'Inter';
   font-style: normal;
@@ -110,13 +121,26 @@ export default {
 .decks {
   position: absolute;
   width: 1361px;
-  height: 299px;
-  left: 39px;
-  top: 354px;
+  height: 200px;
+  left: 100px;
+  top: 260px;
 }
 
 .card {
   background: #DEF3FF;
+}
 
+.add-btn {
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 440px;
+  height: 65px;
+  left: 550px;
+  top: 650px;
+
+  background: #8BFFC0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 </style>

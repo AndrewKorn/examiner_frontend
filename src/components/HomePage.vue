@@ -17,7 +17,7 @@
           <button type="submit" class="btn btn-success mb-3">Регистрация</button>
         </div>
       </form>
-      <img class="logo" src="src/assets/img_2.png">
+      <img class="logo" src="../assets/icon.png">
     </div>
 
   </div>

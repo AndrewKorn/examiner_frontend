@@ -6,6 +6,7 @@ import Subjects from "@/components/Subjects.vue";
 import Login from "@/components/Login.vue";
 import Registration from "@/components/Registration.vue";
 import ConcreteSubject from "@/components/ConcreteSubject.vue";
+import ConcreteDeck from "@/components/ConcreteDeck.vue";
 export default createRouter( {
     history: createWebHashHistory(),
     routes: [
@@ -15,6 +16,7 @@ export default createRouter( {
         {path: "/about", component: About},
         {path: "/:universityName", component: ConcreteUniversity},
         {path: "/:universityName/:facultyName/:course/:semester/subjects", component: Subjects},
-        {path: "/:universityName/:facultyName/:course/:semester/:subjectName/decks", component: ConcreteSubject}
+        {path: "/:universityName/:facultyName/:course/:semester/:subjectName/decks", component: ConcreteSubject},
+        {path: "/:universityName/:facultyName/:course/:semester/:subjectName/:deckId/cards", component: ConcreteDeck},
     ]
 })
